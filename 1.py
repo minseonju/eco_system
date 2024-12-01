@@ -23,3 +23,18 @@ fuel_group = df.groupby('Fuel Type').agg({
 print(fuel_group)
 
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 1) 연료 종류별 이산화탄소 배출량 분포 시각화
+plt.figure(figsize=(10,6))
+sns.boxplot(data=df, x='Fuel Type', y='CO2 Emissions(g/km)', palette='Set2')
+plt.title('CO2 Emissions by Fuel Type')
+plt.xticks(rotation=45)
+plt.show()
+
+# 2) 엔진 크기와 이산화탄소 배출량의 관계 시각화
+plt.figure(figsize=(10,6))
+sns.scatterplot(data=df, x='Engine Size(L)', y='CO2 Emissions(g/km)', hue='Fuel Type')
+plt.title('CO2 Emissions vs Engine Size')
+plt.show()
